@@ -15,5 +15,5 @@ hello_page:
     path:      /{name}
     defaults:  { _controller: JeuxBundle:Default:hello }
 birthday_page:
-    path: /{month}/{day}
+    path: /{monthInLetters}/{day}
     defaults:  { _controller: JeuxBundle:Default:birthday}

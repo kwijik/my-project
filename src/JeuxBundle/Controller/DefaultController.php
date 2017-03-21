@@ -22,13 +22,15 @@ class DefaultController extends Controller
         return $this->render('JeuxBundle:Default:helloAction.html.twig', ["name"=>$name]);
     }
 
-    public function birthdayAction($month, $day)
+    public function birthdayAction($monthInLetters, $day)
     {
+        $months = [0 => 'janvier', 1 => 'fevrier', 2 => 'mars', 3 => 'avril', 4 => 'mai', 5 => 'juin', 6 => 'juillet', 7 => 'aout', 8 => 'septembre', 9 => 'octobre', 10 => 'novembre', 11 => 'decembre'];
+
         $date = new DateTime();
         $year = $date->format('Y');
         // $actualDay = $date.format('d');
         // $actualMonth = $date.format('m');
-
+        $month = array_search(strtolower($monthInLetters), $months);
         $thisBirth = new DateTime(); // date of birh of current year
 
         $thisBirth->setDate($year, $month, $day);
