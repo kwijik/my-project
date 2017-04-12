@@ -1,70 +1,51 @@
-{% extends "layout.html.twig" %}
-{% block content %}
+{% extends 'layout.html.twig' %}
 
-    <h2>Guess the mysterious word</h2>
+{% block content %}
+    <h2>{{ 'page.game.title'|trans }}</h2>
 
     <p class="attempts">
-        You still have 11 remaining attempts.
+        {#{{ 'page.game.remaining_attempts'|transchoice(game.remainingAttempts, {'%number%': game.remainingAttempts}) }}#}
     </p>
-
+    
     <ul class="word_letters">
-        <li class="letter hidden">
-            ?
-        </li>
-        <li class="letter hidden">
-            ?
-        </li>
-        <li class="letter hidden">
-            ?
-        </li>
-        <li class="letter hidden">
-            ?
-        </li>
-        <li class="letter hidden">
-            ?
-        </li>
-        <li class="letter hidden">
-            ?
-        </li>
-        <li class="letter hidden">
-            ?
-        </li>
-        <li class="letter hidden">
-            ?
-        </li>
+        {% for letter in game.wordLetters %}
+            {% set isFound = letter in game.foundLetters %}
+            <li class="letter {{ isFound ? "guessed" : "hidden" }}">
+                {{ isFound ? letter : '?' }}
+            </li>
+        {% endfor %}
     </ul>
 
     <br class="clearfix" />
 
     <p class="attempts">
-        <a href="/game/reset">Reset the game</a>
+        <a href="{{ path('game_reset') }}">{{ 'page.game.reset'|trans }}</a>
     </p>
-
     <br class="clearfix" />
 
-    <h2>Try a letter</h2>
-
-
+    <h2>{{ 'page.game.try_letter'|trans }}</h2>
 
     <ul>
         {% for letter in 'A'..'Z' %}
             <li class="letter">
-            <a href="/game/letter/A">
-                {{ letter }}
-            </a>
-        </li>           
+                {% if letter|lower in game.triedLetters %}
+                    {{ letter }}
+                {% else %}
+                <a href="{{ path('game_play_letter', {letter: letter}) }}">
+                    {{ letter }}
+                </a>
+                {% endif %}
+            </li>
         {% endfor %}
-
     </ul>
 
-    <h2>Try a word</h2>
+    <h2>{{ 'page.game.try_word'|trans }}</h2>
 
-    <form action="/game/word" method="post">
+    <form action="{{ path('game_play_word') }}" method="post">
         <p>
-            <label for="word">Word:</label>
+            <label for="word">{{ 'page.game.word'|trans }}:</label>
             <input type="text" id="word" name="word"/>
-            <button type="submit">Let me guess...</button>
+            <button type="submit">{{ 'page.game.guess_button'|trans }}</button>
         </p>
     </form>
-
 {% endblock %}

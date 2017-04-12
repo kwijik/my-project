@@ -2,46 +2,18 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Miashs Game</title>
+    <title>{% block title 'page.title'|trans %}</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('/bundles/jeux/css/style.css') }}" />
     <link rel="shortcut icon" href="/favicon.ico" />
+    {% block stylesheets %}{% endblock %}
 </head>
 <body>
-<div id="wrapper">
-<div id="header">
-    <div id="logo">
-        <h1>
-            <a href="/">Miashs</a>
-        </h1>
-    </div>
-    <div id="menu">
-        <ul>
-            <li class="first current_page_item">
-                <a href="/game/">Game</a>
-            </li>
-            <li>
-                <a href="/signup">Register</a>
-            </li>
-            <li>
-                <a href="/signin">Login</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
-        <br class="clearfix" />
-    </div>
+<div>
+<a href="{{ path('fos_user_security_login')}}"><div style="margin: 0px;font-size: 30px; color: red;">Login</div> </a>
+<a href="{{ path('fos_user_security_logout') }}"><div style="margin: 10px;font-size: 30px; color: red;">Logout</div></a>
+<a href="{{ path('fos_user_registration_register')}}"><div style="margin: 20px;font-size: 20px; color: blue;">Register</div></a>
 </div>
-
-<div id="page">
-<div id="content">
-
-   {% block content %}{% endblock %}
-    
-</div>
-<br class="clearfix" />
-</div>
-</div>
-
+ 
 </body>
 </html>
+

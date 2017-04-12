@@ -1,40 +1,12 @@
-# jeux:
-#    resource: "@JeuxBundle/Controller/"
-#    type:     annotation
-#    prefix:   /
+jeux:
+    resource: "@JeuxBundle/Controller/"
+    type:     annotation
+    prefix:   /
 
-#app:
-#    resource: "@AppBundle/Controller/"
-#    type:     annotation
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
 
-main_page:
-   path:      /
-   defaults:  { _controller: JeuxBundle:Default:index }
-game_page: 
-  path:      /game
-  defaults:  { _controller: JeuxBundle:Game:home }
-
-failed: 
-  path:      /game/failed
-  defaults:  { _controller: JeuxBundle:Game:gameFailed }
-
-won: 
-  path:      /game/won
-  defaults:  { _controller: JeuxBundle:Game:gameWon }
-
-reset: 
-  path:      /game/reset
-  defaults:  { _controller: JeuxBundle:Game:resetGame }
-
-
-
-hello_page:
-    path:      /{name}
-    defaults:  { _controller: JeuxBundle:Default:hello }
-
-
-
-birthday_page:
-    path: /{monthInLetters}/{day}
-    defaults:  { _controller: JeuxBundle:Default:birthday}
-
+# app/config/routing.yml
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

@@ -8,10 +8,13 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    word_length: 8
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    default_locale:  "%locale%"
+    translator:
+        fallbacks: ['fr', 'en']
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -68,3 +71,11 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+    # app/config/config.yml
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    from_email:
+        address: abrougdhouha@gmail.com
+        sender_name: abroug
