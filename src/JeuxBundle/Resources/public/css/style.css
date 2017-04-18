@@ -332,3 +332,11 @@ ul h4 {
 #page .guessed {
     background: green;
 }
+
+#language-selector{
+    position: absolute;
+    top:0;
+}
+#language-selector li {
+    display: inline-block;
+}

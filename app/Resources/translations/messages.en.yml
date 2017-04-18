@@ -15,7 +15,7 @@ page.failed.title: Game Over!
 page.failed.message: Oops, you're hanged... The word to guess was <strong>%word%</strong>.
 
 page.game.title: Guess the mysterious word
-page.game.remaining_attempts: No more attempts!|{1} Only one remaining attempt|]1, +Inf[ You still have %count% remaining attempts.
+page.game.remaining_attempts: ']-Inf,0[ No more attempts!|{1} Only one remaining attempt|]1,Inf[ You still have %count% remaining attempts.'
 page.game.reset: Reset the game
 page.game.try_letter: Try a letter
 page.game.try_word: Try a word
@@ -23,7 +23,7 @@ page.game.word: Word
 page.game.guess_button: Let me guess...
 
 page.login.title: Access your player account
-page.login.username: Username
+page.login.username: Your login, Sir
 page.login.password: Password
 page.login.button: login
 

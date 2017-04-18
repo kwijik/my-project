@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>WordList list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Words</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for wordList in wordLists %}
+            <tr>
+                <td><a href="{{ path('wordlist_show', { 'id': wordList.id }) }}">{{ wordList.id }}</a></td>
+                <td>{{ wordList.words }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('wordlist_show', { 'id': wordList.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('wordlist_edit', { 'id': wordList.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('wordlist_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

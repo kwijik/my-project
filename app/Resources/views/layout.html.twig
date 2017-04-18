@@ -8,12 +8,84 @@
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
-<div>
-<a href="{{ path('fos_user_security_login')}}"><div style="margin: 0px;font-size: 30px; color: red;">Login</div> </a>
-<a href="{{ path('fos_user_security_logout') }}"><div style="margin: 10px;font-size: 30px; color: red;">Logout</div></a>
-<a href="{{ path('fos_user_registration_register')}}"><div style="margin: 20px;font-size: 20px; color: blue;">Register</div></a>
+<div id="wrapper">
+    <div id="header">
+        <div id="logo">
+            <h1>
+                <a href="{{ path('homepage') }}">Miashs</a>
+            </h1>
+        </div>
+        <ul id="language-selector">
+            {% if path(app.request.attributes.get('_route')) == '/' %}
+                <li><a href="{{ path("homepage", {"_locale": "en"}) }}">EN</a></li>
+                <li><a href="{{ path("homepage", {"_locale": "fr"}) }}">FR</a></li>
+            {% else %}
+                <li><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'en'})) }}">EN</a></li>
+                <li><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'fr'})) }}">FR</a></li>
+            {% endif %}
+        </ul>
+
+        <div id="menu">
+            <ul>
+                <li class="first current_page_item">
+                    <a href="{{ path('game') }}">{{ 'menu.game'|trans }}</a>
+                </li>
+                <li>
+                    <a href="{{path('fos_user_registration_register')}}">{{ 'menu.register'|trans }}</a>
+                </li>
+                <li>
+                    <a>{{ 'menu.contact'|trans }}</a>
+                </li>
+                {% if app.user is null %}
+                <li>
+                    <a href="{{path('fos_user_security_login')}}">{{ 'menu.signin'|trans }}</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+                </li>
+                {% endif %}
+            </ul>
+            <br class="clearfix" />
+        </div>
+    </div>
+
+    <div id="page">
+
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-success" role="alert">
+                {{ flashMessage|trans }}
+            </div>
+        {% endfor %}
+
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+        <div id="sidebar">
+            <h3>{{ 'last.games'|trans }}</h3>
+            <div class="date-list">
+                <ul class="list date-list">
+
+                    <li class="first"><span class="date">Jan 13</span> <a href="#">Ultrices quisque molestie</a></li>
+                    <li><span class="date">Jan 7</span> <a href="#">Neque dolor eget</a></li>
+                    <li><span class="date">Jan 1</span> <a href="#">Sollicitudin interdum</a></li>
+                    <li class="last"><span class="date">Dec 26</span> <a href="#">Varius dignissim</a></li>
+
+                </ul>
+            </div>
+            <h3>{{ 'last.players'|trans }}</h3>
+            <ul>
+                <li>user 1</li>
+                <li>user 2</li>
+                <li>user 3</li>
+                <li>user 4</li>
+                <li>user 5</li>
+            </ul>
+        </div>
+        <br class="clearfix" />
+    </div>
 </div>
- 
+
 </body>
 </html>
 
