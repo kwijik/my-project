@@ -21,9 +21,7 @@ class AppKernel extends Kernel {
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new JeuxBundle\JeuxBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
-            new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
-           # new JMS\TranslationBundle\JMSTranslationBundle()
+            new FOS\UserBundle\FOSUserBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

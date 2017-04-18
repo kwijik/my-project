@@ -1,5 +1,5 @@
-menu.game: Menu
-menu.register: Registrer Monsieur
+menu.game: __menu.game
+menu.register: __menu.register
 menu.signin: __menu.signin
 menu.contact: __menu.contact
 last.games: __last.games

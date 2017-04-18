@@ -79,8 +79,3 @@ fos_user:
     from_email:
         address: example@example.com
         sender_name: example
-
-jms_i18n_routing:
-    default_locale: en
-    locales: [fr, en]
-    strategy: prefix_except_default

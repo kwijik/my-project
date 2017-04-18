@@ -23,7 +23,7 @@ page.game.word: Word
 page.game.guess_button: Let me guess...
 
 page.login.title: Access your player account
-page.login.username: Your login, Sir
+page.login.username: Username
 page.login.password: Password
 page.login.button: login
 
